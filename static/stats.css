@@ -1,0 +1,192 @@
+body {
+    font-family: Poppins;
+    font-weight: 400;
+    background-color: #E4ECFF;
+}
+.container {
+    background-color: white;
+    margin: auto;
+    margin-top: 48px;
+    width: 95%;
+    height: 560px;
+    border-radius: 45px;
+    box-shadow: 8px 8px 37px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.results-section {
+    margin-top: auto;
+    height: 550px;
+    width: 40%;
+    justify-items: center;
+    z-index: 0;
+}
+.high h2{
+    margin-top: 80px;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 30px;
+    color: #707070;
+    text-decoration: underline;
+    z-index: 1;
+}
+.result-box {
+    margin-top: 90px;
+    border-radius: 21px;
+    background-color: #E4ECFF;
+    width: 85%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+}
+.Boxes{
+    box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
+    height: 100px;
+    width: 40%;
+    background-color: #E4ECFF;
+    border: 2px solid;
+    border-radius: 21px;
+    border-color: #707070;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.get h2{
+    font-weight: 600;
+    font-size: 25px;
+    color: #707070;
+}
+.get{
+    margin-top: 48px;
+    margin-left: 40px;
+}
+.input-section{
+    margin: auto;
+    height: 550px;
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.form-group {
+    height: 100px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2px;
+}
+
+.form-group input{
+    background-color: white;
+    border: 2px solid;
+    border-radius: 15px;
+    height: 55px;
+    box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
+    width: 265px;
+    border-color: #707070;
+    font-family: Poppins;
+    font-size: 20px;
+    color: #707070;
+    padding-left: 10px;
+    text-align: center;
+
+}
+.form-group select{
+    background-color: #E4ECFF;
+    border: 2px solid;
+    border-radius: 15px;
+    height: 60px;
+    box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
+    width: 280px;
+    border-color: #707070;
+    font-family: Poppins;
+    text-align: center;
+    font-size: 20px;
+    color: #707070;
+}
+.form-group button{
+    margin-top: 25px;
+    background-color: #CFECDA;
+    border: 2px solid;
+    border-radius: 15px;
+    height: 60px;
+    box-shadow: 7px 7px #CFECDA;
+    width: 282px;
+    border-color: #707070;
+    font-family: Poppins;
+    font-size: 20px;
+    color: #707070;
+    transition-duration: 0.4s;
+}
+.form-group button:hover {
+    background-color: #bfddca;
+}
+hr {
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 470px;
+    border: 1px solid #707070;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .results-section, .input-section {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 10px;
+    }
+    .high h2 {
+        margin-top: 40px;
+        font-size: 24px;
+        margin-bottom: -35px;
+    }
+    .result-box {
+        flex-direction: column;
+        height: 500px;
+        margin-bottom: 22px;
+    }
+    .Boxes {
+        width: 80%;
+        height: auto;
+    }
+    .form-group {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group input, .form-group select, .form-group button {
+        width: 100%;
+        font-size: 18px;
+    }
+    hr {
+        height: 0.5px;
+        width: 90%;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
