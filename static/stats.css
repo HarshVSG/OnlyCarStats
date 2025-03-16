@@ -1,192 +1,151 @@
 body {
-    font-family: Poppins;
-    font-weight: 400;
-    background-color: #E4ECFF;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #E4F8FF;
 }
 .container {
-    background-color: white;
-    margin: auto;
-    margin-top: 48px;
-    width: 95%;
-    height: 560px;
-    border-radius: 45px;
-    box-shadow: 8px 8px 37px rgba(0, 0, 0, 0.10);
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.results-section {
-    margin-top: auto;
-    height: 550px;
-    width: 40%;
-    justify-items: center;
-    z-index: 0;
-}
-.high h2{
-    margin-top: 80px;
-    font-family: Poppins;
-    font-weight: 500;
-    font-size: 30px;
-    color: #707070;
-    text-decoration: underline;
-    z-index: 1;
-}
-.result-box {
-    margin-top: 90px;
-    border-radius: 21px;
-    background-color: #E4ECFF;
-    width: 85%;
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    z-index: 2;
-}
-.Boxes{
-    box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
-    height: 100px;
-    width: 40%;
-    background-color: #E4ECFF;
-    border: 2px solid;
-    border-radius: 21px;
-    border-color: #707070;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-.get h2{
-    font-weight: 600;
-    font-size: 25px;
-    color: #707070;
-}
-.get{
-    margin-top: 48px;
-    margin-left: 40px;
-}
-.input-section{
-    margin: auto;
-    height: 550px;
-    width: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.input-group {
     width: 100%;
+    height: 100vh;
+    background-color: black;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
 }
-.form-group {
-    height: 100px;
-    width: 40%;
+.leftcontainer {
+    width: 25%;
+    height: 100vh;
+    background-color: #E4F8FF;
+    border: solid 2px;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.rightcontainer {
+    width: 100%;
+    height: 100vh;
+    background-color: #E4F8FF;
+    overflow: hidden;
+}
+
+/* Reset Button */
+.reset {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reset-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#myImage {
+    transition: transform 0.5s ease-out;
+}
+.reset-button img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Dropdown Selections */
+.options {
+    width: 100%;
+    height: 50%;
+}
+.select-group {
+    font-family: Poppins, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 10%;
+}
+.select-field {
+    width: 100%;
+    font-family: Poppins, sans-serif;
+    padding: 12px;
+    border: 2px solid #000; 
+    border-radius: 13px; 
+    background-color: white;
+    box-shadow: #fff 3px 3px 0 0, #000 3px 3px 0 1.5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+}
+
+/* Submit Button */
+.submit {
+    height: 20%;
+    font-family: Poppins, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 10%;
+}
+.submit-button {
+    width: 100%;
+    font-family: Poppins, sans-serif;
+    padding: 12px;
+    border: 2px solid #000; 
+    border-radius: 13px; 
+    background-color: #B6F5D9;
+    box-shadow: #05BCC2 3px 3px 0 0, #000 3px 3px 0 1.5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+}
+
+/* Logo */
+.logo {
+    width: 100%;
+    height: 20%;
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2px;
+    align-items: center;
+    overflow: hidden;
+}
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+h3 {
+    margin-top: -30px;
+    font-weight: 500;
 }
 
-.form-group input{
-    background-color: white;
-    border: 2px solid;
-    border-radius: 15px;
-    height: 55px;
-    box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
-    width: 265px;
-    border-color: #707070;
-    font-family: Poppins;
-    font-size: 20px;
-    color: #707070;
-    padding-left: 10px;
-    text-align: center;
-
+/* Recently Added Section */
+.recently-added {
+    font-family: Poppins, sans-serif;
+    justify-self: center;
+    width: 90%;
+    height: 27%;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow: hidden;
 }
-.form-group select{
-    background-color: #E4ECFF;
-    border: 2px solid;
-    border-radius: 15px;
-    height: 60px;
-    box-shadow: 0px 3px 6px rgb(0, 0, 0, 0.16);
-    width: 280px;
-    border-color: #707070;
-    font-family: Poppins;
-    text-align: center;
-    font-size: 20px;
-    color: #707070;
-}
-.form-group button{
-    margin-top: 25px;
-    background-color: #CFECDA;
-    border: 2px solid;
-    border-radius: 15px;
-    height: 60px;
-    box-shadow: 7px 7px #CFECDA;
-    width: 282px;
-    border-color: #707070;
-    font-family: Poppins;
-    font-size: 20px;
-    color: #707070;
-    transition-duration: 0.4s;
-}
-.form-group button:hover {
-    background-color: #bfddca;
-}
-hr {
-    margin-top: auto;
-    margin-bottom: auto;
-    height: 470px;
-    border: 1px solid #707070;
-    margin-left: 10px;
+.rec {
+    width: 100%;
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-        align-items: center;
-        justify-content: center;
-    }
-    .results-section, .input-section {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        padding: 10px;
-    }
-    .high h2 {
-        margin-top: 40px;
-        font-size: 24px;
-        margin-bottom: -35px;
-    }
-    .result-box {
-        flex-direction: column;
-        height: 500px;
-        margin-bottom: 22px;
-    }
-    .Boxes {
-        width: 80%;
-        height: auto;
-    }
-    .form-group {
-        width: 80%;
-        justify-content: center;
-        align-items: center;
-    }
-    .form-group input, .form-group select, .form-group button {
-        width: 100%;
-        font-size: 18px;
-    }
-    hr {
-        height: 0.5px;
-        width: 90%;
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+/* Fixing Duplicate ID issue & Ensuring Dynamic Content Works */
+#recent-cars {
+    display: flex;   
+    gap: 15px;         
+    flex-wrap: wrap;
+    height: 160px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .recent-car-image {
+    width: 250px;
+    height: 150px;
+    border-radius: 20px; 
+    border: solid 2px;
+  }

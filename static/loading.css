@@ -1,0 +1,22 @@
+body {
+    background-color: #E4F8FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.supercar-gif {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 150px; 
+    height: auto;  
+    z-index: 0;
+}

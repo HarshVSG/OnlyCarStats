@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add Car</title>
+    <link rel="stylesheet" href="../static/stats.css">
+</head>
+<body>
+    <h1>Add a New Car</h1>
+    <form id="carForm">
+        <label>Brand:</label> <input type="text" id="brand" required><br>
+        <label>Model:</label> <input type="text" id="model" required><br>
+        <label>Year:</label> <input type="number" id="year" required><br>
+        <label>Horsepower:</label> <input type="number" id="horsepower" required><br>
+        <label>Torque:</label> <input type="number" id="torque" required><br>
+        <label>Redline:</label> <input type="number" id="redline"><br>
+        <label>0-60 mph (seconds):</label> <input type="number" step="0.1" id="zero_to_sixty"><br>
+        <label>Top Speed (km/h):</label> <input type="number" id="top_speed"><br>
+        <label>Quarter Mile (seconds):</label> <input type="number" step="0.1" id="quarter_mile"><br>
+        <label>Displacement (L):</label> <input type="number" step="0.1" id="displacement"><br>
+        <label>Engine:</label> <input type="text" id="engine"><br>
+        <label>Transmission:</label> <input type="text" id="transmission"><br>
+        <label>Rim Size:</label> <input type="text" id="rim_size"><br>
+        <label>Power to Weight Ratio:</label> <input type="number" step="0.1" id="power_to_weight"><br>
+        <label>Image URL:</label> <input type="text" id="image_url"><br>
+        <button type="submit">Add Car</button>
+    </form>
+
+    <script src="../static/admin.js"></script>
+</body>
+</html>

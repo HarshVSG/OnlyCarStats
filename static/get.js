@@ -1,52 +1,115 @@
-document.getElementById('carForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+    const brandSelect = document.getElementById("brand");
+    const modelSelect = document.getElementById("model");
+    const yearSelect = document.getElementById("year");
+    const resetButton = document.querySelector(".reset-button");
+    let currentRotation = 0;
 
-    const bodyType = document.getElementById('bodyType').value;
-    const carName = document.getElementById('carName').value;
-    const horsepower = parseFloat(document.getElementById('horsepower').value);
-    const torque = parseFloat(document.getElementById('torque').value);
-    const weight = parseFloat(document.getElementById('weight').value);
-    const cylinder = parseFloat(document.getElementById('cylinder').value);
-    const drivetrains = document.getElementById('drivetrains').value;
-    
-    // FIX: Get missing values
-    const engineType = document.getElementById('engineType').value;
-    const fuelType = document.getElementById('fuelType').value;
-
-    // Ensure all values are valid
-    if (!carName || isNaN(horsepower) || isNaN(torque) || isNaN(weight) || isNaN(cylinder) || !drivetrains || !engineType || !fuelType) {
-        alert("Please fill out all fields correctly.");
-        return;
+    // Fetch brands and populate the dropdown
+    function fetchBrands() {
+        fetch("http://127.0.0.1:5000/get_brands")
+            .then(response => response.json())
+            .then(brands => {
+                brandSelect.innerHTML = '<option value="">--</option>'; // Reset
+                brands.forEach(brand => {
+                    let option = document.createElement("option");
+                    option.value = brand;
+                    option.textContent = brand;
+                    brandSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error("Error fetching brands:", error));
     }
 
-    const data = {
-        vehicle_type: bodyType,
-        car_name: carName,
-        engine_type: engineType,  // Now defined correctly
-        fuel_type: fuelType,      // Now defined correctly
-        horsepower: horsepower,
-        torque: torque,
-        weight: weight,
-        cylinder: cylinder,
-        drivetrains: drivetrains
-    };
+    // Fetch models based on selected brand
+    function fetchModels(brand) {
+        modelSelect.disabled = true; // Disable while loading
+        fetch(`http://127.0.0.1:5000/get_models?brand=${brand}`)
+            .then(response => response.json())
+            .then(models => {
+                modelSelect.innerHTML = '<option value="">--</option>';
+                models.forEach(model => {
+                    let option = document.createElement("option");
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+                modelSelect.disabled = false; // Enable after loading
+            })
+            .catch(error => console.error("Error fetching models:", error));
+    }
 
-    console.log('Sending data:', data); // Debugging
+    // Fetch years based on selected brand & model
+    function fetchYears(brand, model) {
+        yearSelect.disabled = true; // Disable while loading
+        fetch(`http://127.0.0.1:5000/get_years?brand=${brand}&model=${model}`)
+            .then(response => response.json())
+            .then(years => {
+                yearSelect.innerHTML = '<option value="">--</option>';
+                years.forEach(year => {
+                    let option = document.createElement("option");
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                });
+                yearSelect.disabled = false; // Enable after loading
+            })
+            .catch(error => console.error("Error fetching years:", error));
+    }
 
-    fetch('/calculate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log('Response received:', result); // Debugging
-        document.getElementById('zeroToHundred').textContent = `${result['0 to 100kmph']} seconds`;
-        document.getElementById('quarterMile').textContent = `${result['1/4th Mile']} seconds`;
-        document.getElementById('topSpeed').textContent = `${result['Top Speed(kmph)']} kmph`;
-        document.getElementById('carNameResult').textContent = result['Name'];
-    })
-    .catch(error => console.error('Error:', error));
+    // Event Listeners
+    brandSelect.addEventListener("change", function () {
+        modelSelect.innerHTML = '<option value="">--</option>';
+        yearSelect.innerHTML = '<option value="">--</option>';
+        modelSelect.disabled = true;
+        yearSelect.disabled = true;
+
+        if (this.value) {
+            fetchModels(this.value);
+        }
+    });
+
+    modelSelect.addEventListener("change", function () {
+        yearSelect.innerHTML = '<option value="">--</option>';
+        yearSelect.disabled = true;
+
+        if (this.value) {
+            fetchYears(brandSelect.value, this.value);
+        }
+    });
+
+    // Rotate the wheel and reset selections
+    resetButton.addEventListener("click", function () {
+        currentRotation += 120;
+        document.getElementById("myImage").style.transform = `rotate(${currentRotation}deg)`;
+
+        // Reset dropdowns
+        brandSelect.value = "";
+        modelSelect.innerHTML = '<option value="">--</option>';
+        yearSelect.innerHTML = '<option value="">--</option>';
+        modelSelect.disabled = true;
+        yearSelect.disabled = true;
+    });
+
+    // Initial fetch
+    fetchBrands();
 });
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("http://127.0.0.1:5000/get_recent_cars")
+  .then((response) => response.json())
+  .then((data) => {
+    const container = document.getElementById("recent-cars");
+    container.innerHTML = ""; // Clear previous content
+    data.forEach((imageUrl) => {
+      const img = document.createElement("img");
+      img.src = imageUrl;
+      img.alt = "Car Image";
+      img.classList.add("recent-car-image"); // ✅ Add CSS class
+      container.appendChild(img);
+    });
+  })
+  .catch((error) => console.error("Error fetching recent cars:", error));
+});
+function submitForm() {
+    window.location.href = "loading.html"; // Redirect to load.html
+}
