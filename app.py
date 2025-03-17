@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from flask import Flask, render_template, request, jsonify
 from urllib.parse import quote_plus  # ✅ Handles special characters in the password
 
 
@@ -132,6 +132,48 @@ def get_years():
 def get_recent_cars():
     recent_cars = Car.query.order_by(Car.id.desc()).limit(4).all()
     return jsonify([car.image_url for car in recent_cars])  # ✅ Only image URLs
+
+# ✅ Serve HTML template
+@app.route("/results_page", methods=["GET"])
+def results_page():
+    brand = request.args.get("brand")
+    model = request.args.get("model")
+    year = request.args.get("year")
+    return render_template("results.html", brand=brand, model=model, year=year)
+
+# ✅ Separate API route to fetch car details
+@app.route("/get_car_details", methods=["GET"])
+def get_car_details():
+    brand = request.args.get("brand")
+    model = request.args.get("model")
+    year = request.args.get("year")
+
+    if not brand or not model or not year:
+        return jsonify({"error": "Missing parameters"}), 400
+
+    car = Car.query.filter_by(brand=brand, model=model, year=year).first()
+
+    if car:
+        return jsonify({
+            "brand": car.brand,
+            "model": car.model,
+            "year": car.year,
+            "horsepower": f"{car.horsepower} HP",
+            "torque": f"{car.torque} NM",
+            "redline": f"{car.redline} RPM",
+            "zero_to_sixty": f"{car.zero_to_sixty}s",
+            "top_speed": f"{car.top_speed}kph",
+            "quarter_mile": f"{car.quarter_mile}s @ 190kph",
+            "displacement": f"{car.displacement}L",
+            "engine": car.engine,
+            "transmission": car.transmission,
+            "rim_size": car.rim_size,
+            "power_to_weight": f"{car.power_to_weight} : 1",
+            "image_url": car.image_url,
+        })
+    else:
+        return jsonify({"error": "Car not found"}), 404
+
 
 if __name__ == "__main__":
     app.run(debug=True)  # ✅ For development only, remove in production

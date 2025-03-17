@@ -1,0 +1,64 @@
+.result-container {
+    background-color: #E4F8FF;
+    border-radius: 12px;
+    padding: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.top-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.car-image {
+    width: 30%;
+    border-radius: 10px;
+}
+
+.car-info h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.car-info h2 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.audio-icon img {
+    width: 30px;
+}
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background: #A7EFC1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.flag-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.ad-section {
+    background: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}

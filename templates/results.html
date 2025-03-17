@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OnlyCarStats</title>
+    <link rel="stylesheet" href="../static/results.css">
+    <script src="../static/results.js" defer></script>
 </head>
-<body>
-    
+
+<body data-brand="{{ brand }}" data-model="{{ model }}" data-year="{{ year }}">
+
+    <div class="details-container">
+        <!-- Car Image and Basic Info -->
+        <div class="header-section">
+            <img id="car-image" src="" alt="Car Image" class="car-main-image">
+            <div class="basic-info">
+                <h2 id="car-brand"></h2>
+                <h1 id="car-model"></h1>
+                <p id="car-year"></p>
+            </div>
+            <div class="audio-icon" onclick="playAudio()">
+                <img src="soundwave-icon.png" alt="Audio Icon">
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-box"><strong>HorsePower</strong><br><span id="car-hp"></span></div>
+            <div class="stat-box"><strong>Torque</strong><br><span id="car-torque"></span></div>
+            <div class="stat-box"><strong>Redline</strong><br><span id="car-redline"></span></div>
+            <div class="stat-box"><strong>0–60mph</strong><br><span id="car-0to60"></span></div>
+            <div class="stat-box"><strong>Top Speed</strong><br><span id="car-top-speed"></span></div>
+            <div class="stat-box"><strong>Quarter Mile</strong><br><span id="car-quarter-mile"></span></div>
+            <div class="stat-box"><strong>Power to Weight</strong><br><span id="car-pwr-weight"></span></div>
+            <div class="stat-box"><strong>Displacement</strong><br><span id="car-displacement"></span></div>
+            <div class="stat-box"><strong>Engine</strong><br><span id="car-engine"></span></div>
+            <div class="stat-box"><strong>Transmission</strong><br><span id="car-transmission"></span></div>
+            <div class="stat-box"><strong>Rim Size</strong><br><span id="car-rim-size"></span></div>
+        </div>
+
+        <div class="ad-section">AD</div>
+    </div>
+
+    <!-- Optional Audio Element -->
+    <audio id="carAudio" src=""></audio>
+
 </body>
+
 </html>

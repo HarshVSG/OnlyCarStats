@@ -111,5 +111,21 @@ document.addEventListener("DOMContentLoaded", function () {
   .catch((error) => console.error("Error fetching recent cars:", error));
 });
 function submitForm() {
-    window.location.href = "loading.html"; // Redirect to load.html
+    const brand = document.getElementById("brand").value;
+    const model = document.getElementById("model").value;
+    const year = document.getElementById("year").value;
+
+    if (!brand || !model || !year) {
+        alert("Please select brand, model, and year.");
+        return;
+    }
+
+    // Redirect with query params
+    window.location.href = `results.html?brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(model)}&year=${encodeURIComponent(year)}`;
 }
+
+yearSelect.addEventListener("change", function () {
+    if (this.value) {
+        fetchCarDetails(brandSelect.value, modelSelect.value, this.value);
+    }
+});
